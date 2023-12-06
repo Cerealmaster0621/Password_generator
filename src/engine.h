@@ -33,6 +33,7 @@ class RandomEngine{
             };
         };        
         //constructor
+        void initialize_random_engine();
         RandomEngine();
         explicit RandomEngine(uint8_t l);
         explicit RandomEngine(bool m_u);
@@ -59,5 +60,6 @@ class RandomEngine{
         void set_must_symbol(bool b);
         std::string get_required_string();
         void set_required_string(std::string s);
-        std::string get_password(uint8_t l, bool m_u, bool m_s, std::string r_s);
+        std::string get_password();
+        char get_table_character(uint64_t index);//index - generated random number
 };
