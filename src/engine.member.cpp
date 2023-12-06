@@ -4,6 +4,9 @@
 #include <fstream>
 #include <vector>
 #include <random>
+#include <functional>
+#include <algorithm>
+#include <cctype>
 
 //CONSTRUCTORS IN engine.constructor.cpp
 
@@ -12,7 +15,7 @@
 /*
 ** RandomEngine::set_modifier():
 ** set desirable modifier depends on 
-** user requires included uppercase or symbol
+** user requires including uppercase or symbol
 */
 void RandomEngine::set_modifier(){
     if(must_uppercase&&must_symbol){
@@ -66,38 +69,32 @@ void RandomEngine::set_required_string(std::string s){
 */
 std::string RandomEngine::get_password(){
     std::string password = "";
-    char c;
-    std::string r_s = this->required_string;
-
-    while(password.length() != this->length){ //while generating loop is not finished
+    std::string r_s = required_string;
+    auto random = std::bind(*distributor, *generate);
+    table tbl;
+    while(password.length() != length){ //while generating loop is not finished
         while(!r_s.empty()){
             char first_char = r_s[0];
             password+=first_char;
             r_s.erase(0, 1);
         }
-        
+        if (password.length() != length){
+            uint8_t idx = random();
+            char new_char = get_table_character(idx);
+            password+=new_char;
+        }
     }
+    return password;
 }
 
 /*
 ** RandomEngine::get_table_character(index from *distributor):
 ** OUTPUT => designated char from RandomEngine::table
 */
-char RandomEngine::get_table_character(uint64_t index){
-    char result;
+char RandomEngine::get_table_character(uint8_t index){
     table tbl;
-    if (index<26){
-        result = tbl.alpha_upper[index];
-        return result;
-    }else if(index<52){
-        result = tbl.alpha_lower[index-26];
-        return result;
-    }else if(index<62){
-        result = tbl.num[index-36];
-        return result;
-    }else{
-        result = tbl.sym[index-46];
-        return result;
-    }
+    std::vector<char> arr = modifier==46?tbl.alpha_sym_lower_num:tbl.alpha_upper_sym_lower_num;
+    char result = arr[index];
+    return result;
 }
 
