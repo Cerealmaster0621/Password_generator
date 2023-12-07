@@ -29,6 +29,11 @@ void RandomEngine::set_modifier(){
     }
 }
 
+uint8_t RandomEngine::get_modifier(){
+    set_modifier();
+    return modifier;
+}
+
 uint8_t RandomEngine::get_length(){
     return length;
 }

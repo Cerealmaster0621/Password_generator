@@ -38,6 +38,7 @@ class RandomEngine{
         RandomEngine(uint8_t l, bool m_u, bool m_s, std::string r_s);
         //member function
         void set_modifier();
+        uint8_t get_modifier();        
         uint8_t get_length();
         void set_length(uint8_t l);
         bool get_must_uppercase();
