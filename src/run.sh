@@ -5,7 +5,7 @@
 if [ -f ./main ]; then
     ./main "$@"
 else
-    g++ --std=c++14 -o main main.cpp engine.constructor.cpp engine.member.cpp
+    g++ --std=c++14 -o main main.cpp engine.constructor.cpp engine.member.cpp time.cpp
 
     if [ $? -eq 0 ]; then
         ./main "$@"

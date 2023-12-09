@@ -1,11 +1,8 @@
 #include "engine.h"
+#include "time.h"
 #include <iostream>
 #include <string>
 #include <cmath>
-
-uint64_t brute_force(uint8_t length,uint8_t modifier){
-    return pow(modifier,(int)length)/pow(10,10);
-}
 
 int main(int argc, char* argv[]){
     std::string password = "";
@@ -32,11 +29,13 @@ int main(int argc, char* argv[]){
             std::cout<<"--u or --uppercase : Requires password generates with at least one uppercase, default - F\n";
             std::cout<<"--s or --symbol : Requires password generates with at least one symbol, default - F \n";
             std::cout<<"--i or --include : Requires password includes following string \n";
+            std::cout<<"EX) ./run.sh --l 12 --u --s --i a\n";
         }
 
         //--l or --length
         if(arg == "--l" || arg == "--length"){
-            if (i+1<argc && !isdigit(atoi(argv[i+1]))){
+            if (i+1<argc){
+                //check if --l has integer not string
                 length = atoi(argv[i+1]);
             }
         }
@@ -71,12 +70,14 @@ int main(int argc, char* argv[]){
     }
     if(!err_flg){ //creates password
         RandomEngine engine(length, must_uppercase,must_symbol,required_string);
+        TimeCalc time;
         password = engine.get_password();
-        bf = brute_force(length,engine.get_modifier());
+        uint8_t modifier = engine.get_modifier();
+        bf = time.get_crack_time(length,modifier,password);
         std::cout<<"------------------\n";
         std::cout<<"Created Password : \n";
         std::cout<<password<<'\n';
         std::cout<<"------------------\n";
-        std::cout<<"It takes about "<<bf/3600<<" hours to crack this password. \n";
+        time.print_time(bf);
     }
 }
