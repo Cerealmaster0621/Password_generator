@@ -14,7 +14,6 @@ uint64_t TimeCalc::get_crack_time(uint8_t length, uint8_t modifier, std::string 
     double log_numerator = length * log(modifier);
     double log_denominator = log(pow(10, 9)) + log(5 * weight);
     double result = exp(log_numerator - log_denominator);
-    std::cout<<result<<std::endl;
     return static_cast<uint64_t>(result);
 }
 
