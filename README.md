@@ -18,8 +18,6 @@ Password-gen uses cmake for building. CMake can be installed via package manager
   sudo apt-get install cmake
 -   For Fedora/CentOS
     
-    bashCopy code
-    
     ``sudo dnf install cmake ``
     
 
@@ -65,8 +63,6 @@ Passgen supports various flags for customizing the generated password:
 -   `--i` or `--include <string>`: Include the specified string in the password.
 
 Example usage:
-
-bashCopy code
 
 `./run.sh --l 12 --u --s --i aaa` 
 
