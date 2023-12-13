@@ -1,4 +1,3 @@
-
 # Password-gen
 
 ## About the tool
@@ -18,9 +17,6 @@ This program uses cmake for building. CMake can be installed via package manager
   ```bash
   sudo apt-get install cmake
 -   For Fedora/CentOS
-    
-    bashCopy code
-    
     ```bash
     sudo dnf install cmake 
 To learn more about cmake, refer to [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
