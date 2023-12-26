@@ -33,6 +33,7 @@ This requires a C++14 compatible compiler.
     cmake -B build/
     cd build
     make
+    ./main --help
     ```
 ## Run Using Chmod
 
