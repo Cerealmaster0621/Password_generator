@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
             std::cout<<"--u or --uppercase : Requires the password to include at least one uppercase letter, default - F\n";
             std::cout<<"--s or --symbol : Requires the password to include at least one symbol, default - F \n";
             std::cout<<"--i or --include : Requires the password to include the following string \n";
-            std::cout<<"Example: ./run.sh --l 12 --u --s --i aaa\n";
+            std::cout<<"Example: ./main --l 12 --u --s --i aaa\n";
         }
 
         //--l or --length
