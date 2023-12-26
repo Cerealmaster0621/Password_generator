@@ -28,7 +28,7 @@ This requires a C++14 compatible compiler.
 -   Instruction :
     
     ```bash
-    git clone https://github.com/Cerealmaster0621/Password_generator` 
+    git clone https://github.com/Cerealmaster0621/Password_generator
     cd Password_generator
     cmake -B build/
     cd build
