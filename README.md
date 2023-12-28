@@ -37,15 +37,12 @@ This requires a C++14 compatible compiler.
     chmod +x main
     ./main --help
     ```
-## Run Using Chmod
+## Run using .sh
 
--   Make the script executable:  
+-   Instruction:  
     ```bash
+    cd src
     chmod +x run.sh
-    ```
-    
--   Run the program:
-    ```bash
     ./run.sh
     ``` 
    
@@ -63,7 +60,7 @@ This supports various flags for customizing the generated password:
 
 Example usage:
 ``` bash
-./run.sh --l 12 --u --s --i aaa
+./main --l 12 --u --s --i aaa
 ```
 # License 
 MIT License Copyright (c) 2023 YoungJune Kang
