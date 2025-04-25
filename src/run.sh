@@ -3,7 +3,6 @@
 # run the program with
 # ./run.sh
 
-# ANSI escape sequences for colors
 RED="\033[0;31m"
 GREEN="\033[0;32m"
 YELLOW="\033[0;33m"
@@ -19,11 +18,7 @@ if [ -f ./main ]; then
     ./main "$@"
 else
     echo -e "${YELLOW}No executable found. Compiling...${RESET}"
-    
-    # Command substitution (meaningless usage)
     COMPILE_TIME=$(date "+%H:%M:%S")
-    
-    # Using for loop to build compilation command
     COMPILE_CMD="g++ --std=c++14 -o main"
     for src_file in "${SOURCE_FILES[@]}"; do
         COMPILE_CMD="${COMPILE_CMD} ${src_file}"
